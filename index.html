@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Redact Text</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Redact Text</h1>
+        <form id="redact-form">
+            <label for="original-text">Original Text:</label>
+            <textarea id="original-text" rows="5" cols="50"></textarea>
+            
+            <label for="words-to-redact">Words to Redact (separated by space):</label>
+            <input type="text" id="words-to-redact">
+            
+            <button type="button" id="redact-button">Redact Now</button>
+        </form>
+        
+        <div class="redacted-text" id="redacted-text">
+            <h2>Redacted Text</h2>
+            <p id="redacted-output"></p>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
