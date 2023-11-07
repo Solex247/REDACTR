@@ -1,28 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const redactForm = document.getElementById('redact-form');
-    const originalText = document.getElementById('original-text');
-    const wordsToRedact = document.getElementById('words-to-redact');
-    const redactedOutput = document.getElementById('redacted-output');
+document.getElementById("redact-button").addEventListener("click", function () {
+    const originalText = document.getElementById("original-text").value;
+    const redactWords = document.getElementById("redact-words").value.split(" ");
+    const replacementText = document.getElementById("replacement-text").value;
 
-    redactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        redactText();
+    let redactedText = originalText;
+
+    redactWords.forEach((word) => {
+        const regex = new RegExp("\\b" + word + "\\b", "gi");
+        redactedText = redactedText.replace(regex, replacementText);
     });
 
-    const redactButton = document.getElementById('redact-button');
-    redactButton.addEventListener('click', redactText);
-
-    function redactText() {
-        const text = originalText.value;
-        const words = wordsToRedact.value.split(' ');
-
-        let redactedText = text;
-
-        words.forEach(word => {
-            const regex = new RegExp(word, 'gi');
-            redactedText = redactedText.replace(regex, '****');
-        });
-
-        redactedOutput.textContent = redactedText;
-    }
+    document.getElementById("redacted-output").textContent = redactedText;
 });
